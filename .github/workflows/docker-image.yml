@@ -1,0 +1,18 @@
+name: Construção da imagem docker
+
+on: # gatilhos, quais comandos irão executar as ações
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build the Docker image
+      run: docker build ./odoo/Dockerfile --tag my-odoo-16
